@@ -1,0 +1,19 @@
+{
+    "name": "cloner",
+    "version": "0.0.1",
+    "scripts": {
+        "start": "node ./scripts/server.js",
+        "build": "browserify main.js --outfile bundled.js",
+        "watch": "watchify ./main.js -o ./bundled.js -v",
+        "deploy": "node ./scripts/deploy.js"
+    },
+    "dependencies": {
+        "gamejs": "~1.0.0"
+    },
+    "devDependencies": {
+        "browserify": "~2.29.0",
+        "connect": "~2.9.0",
+        "adm-zip": "~0.4.3",
+        "scp": "~0.0.3"
+    }
+}
