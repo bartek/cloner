@@ -8,20 +8,20 @@ var Animation = require('./animate').Animation;
 var Body = require('./physics').Body;
 
 var Actor = exports.Actor = function(options) {
-	Actor.superConstructor.apply(this, arguments);
-	this.init(options);
+    Actor.superConstructor.apply(this, arguments);
+    this.init(options);
     return this;
 };
 objects.extend(Actor, Sprite);
 
 Actor.prototype.init = function(options) {
-	this.scale = options.scale || 10;
-	this.x = options.x;
-	this.y = options.y;
-	this.height = options.height;
-	this.width = options.width;
-	this.angle = options.angle * (Math.PI / 180) || 0;
-	this.density = options.density || 2;
+    this.scale = options.scale || 10;
+    this.x = options.x;
+    this.y = options.y;
+    this.height = options.height;
+    this.width = options.width;
+    this.angle = options.angle * (Math.PI / 180) || 0;
+    this.density = options.density || 2;
 
     this.absAngle = this.angle;
 
@@ -59,8 +59,6 @@ Actor.prototype.update = function(msDuration) {
 		this.animation.update(msDuration);
 		this.image = this.animation.image;
 	}
-
-	//this.body.body.
 	return;
 };
 
@@ -75,7 +73,7 @@ Actor.prototype.draw = function(display) {
 		if (this.image) {
 			this.image = gamejs.transform.rotate(this.image, (this.body.body.GetAngle() - Math.PI/2) * (180 / Math.PI));
 			gamejs.sprite.Sprite.prototype.draw.apply(this, arguments);
-		};
+		}
 	} else {
 		//draw.rect(display, "#000FFF", new gamejs.Rect(this.pos, [5,5]));
 	}

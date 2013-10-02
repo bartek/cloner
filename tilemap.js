@@ -3,8 +3,11 @@
  *
  */
 var gamejs = require('gamejs'),
+    box2d = require('box2dweb'),
     objects = gamejs.utils.objects,
     tmx = gamejs.tmx;
+
+console.log(box2d);
 
 var Tile = function(rect, properties, world) {
     Tile.superConstructor.apply(this, arguments);
@@ -15,33 +18,31 @@ var Tile = function(rect, properties, world) {
     this.properties = properties;
     gamejs.log("Tile", properties, this.rect.center[0]);
 
-    if (properties.block === 'always') {
-        // Define fixture to set on the body eventually.
-        var fixDef = new box2d.b2FixtureDef();
-        fixDef.density = 1.0;
-        fixDef.friction = 0.5;
-        fixDef.restitution = 0.2;
+    return
+    // Define fixture to set on the body eventually.
+    var fixDef = new box2d.Dynamics.b2FixtureDef;
+    fixDef.density = 1.0;
+    fixDef.friction = 0.5;
+    fixDef.restitution = 0.2;
 
-        // Create a body, setting the initial postion, type.
-        var bodyDef = new box2d.b2BodyDef();
-        bodyDef.type = box2d.b2Body.b2_staticBody;
-        bodyDef.position.x = this.rect.center[0] / globals.BOX2D_SCALE;
-        bodyDef.position.y = this.rect.center[1] / globals.BOX2D_SCALE;
-        fixDef.shape = new box2d.b2PolygonShape();
+    // Create a body, setting the initial postion, type.
+    var bodyDef = new box2d.Dynamics.b2BodyDef;
+    bodyDef.type = box2d.b2Body.b2_staticBody;
+    bodyDef.position.x = this.rect.center[0] / globals.BOX2D_SCALE;
+    bodyDef.position.y = this.rect.center[1] / globals.BOX2D_SCALE;
+    fixDef.shape = new box2d.Shapes.b2PolygonShape;
 
-        // Create a box around this polygon, with the box centered on the origin
-        // of the tile.
-        fixDef.shape.SetAsBox(
-                (this.rect.width - tilePadding) * 0.5 / globals.BOX2D_SCALE,
-                (this.rect.height - tilePadding) * 0.5 / globals.BOX2D_SCALE
-        );
+    // Create a box around this polygon, with the box centered on the origin
+    // of the tile.
+    fixDef.shape.SetAsBox(
+            (this.rect.width - tilePadding) * 0.5 / globals.BOX2D_SCALE,
+            (this.rect.height - tilePadding) * 0.5 / globals.BOX2D_SCALE
+    );
 
-        this.b2Body = world.CreateBody(bodyDef);
-        this.b2Body.CreateFixture(fixDef);
+    this.b2Body = world.CreateBody(bodyDef);
+    this.b2Body.CreateFixture(fixDef);
 
-        this.b2Body.SetUserData(this);
-    }
-    this.kind = 'tile';
+    this.b2Body.SetUserData(this);
 
     return this;
 };

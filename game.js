@@ -1,7 +1,8 @@
 var gamejs = require('gamejs'),
+    conf = require('./conf'),
     TileMap = require('./tilemap').TileMap,
+    Actor = require('./gramework/actors').Actor,
     extend = gamejs.utils.objects.extend;
-var Actor = require('./gramework/actors').Actor();
 
 var imgfy = function(imgPath) {
     return gamejs.image.load(imgPath);
@@ -9,6 +10,7 @@ var imgfy = function(imgPath) {
 
 var Player = function() {
     Player.superConstructor.apply(this, arguments);
+    this.image = imgfy(conf.Images.player);
 };
 extend(Player, Actor);
 
