@@ -1,4 +1,4 @@
-var Box2D = require('../Box2dWeb-2.1.a.3');
+var Box2D = require('box2dweb');
 
   var b2Vec2 = Box2D.b2Vec2;
   var b2BodyDef = Box2D.b2BodyDef;
