@@ -19,8 +19,8 @@ Actor.prototype.init = function(options) {
 	this.scale = options.scale || 10;
 	this.x = options.x;
 	this.y = options.y;
-	this.height = options.height;
-	this.width = options.width;
+	this.height = options.height || 5;
+	this.width = options.width || 5;
 	this.angle = options.angle * (Math.PI / 180) || 0;
 	this.density = options.density || 2;
 
@@ -40,7 +40,7 @@ Actor.prototype.init = function(options) {
         this.animation = new Animation(this.spriteSheet, animations);
         this.animation.start(this.startingAnimation);
     }
-
+    
     if (this.physics) {
         this.body = new Body(this.physics, {
             type: options.type || 'dynamic',
@@ -62,13 +62,13 @@ Actor.prototype.update = function(msDuration) {
 	
 	if (this.physics) {
 		this.realRect.center = [this.body.body.GetPosition().x * this.scale, this.body.body.GetPosition().y * this.scale];
-	}
 
-	this.rect.height = (Math.abs(this.height * Math.sin(this.body.body.GetAngle()) * this.scale) + Math.abs(this.width * Math.cos(this.body.body.GetAngle()) * this.scale)) * 2;
-	this.rect.width = (Math.abs(this.height * Math.cos(this.body.body.GetAngle()) * this.scale) + Math.abs(this.width * Math.sin(this.body.body.GetAngle()) * this.scale)) * 2;
-	
-	this.rect.top = (Math.round(this.realRect.top) + 0.5 - (this.rect.height) / 2) + (this.height * this.scale);
-	this.rect.left = (Math.round(this.realRect.left) + 0.5 - (this.rect.width) / 2) + (this.width * this.scale);
+		this.rect.height = (Math.abs(this.height * Math.sin(this.body.body.GetAngle()) * this.scale) + Math.abs(this.width * Math.cos(this.body.body.GetAngle()) * this.scale)) * 2;
+		this.rect.width = (Math.abs(this.height * Math.cos(this.body.body.GetAngle()) * this.scale) + Math.abs(this.width * Math.sin(this.body.body.GetAngle()) * this.scale)) * 2;
+		
+		this.rect.top = (Math.round(this.realRect.top) + 0.5 - (this.rect.height) / 2) + (this.height * this.scale);
+		this.rect.left = (Math.round(this.realRect.left) + 0.5 - (this.rect.width) / 2) + (this.width * this.scale);
+	}
 
 	if (this.animation) {
 		this.animation.update(msDuration);
@@ -88,7 +88,6 @@ Actor.prototype.draw = function(display) {
 	
 	if (this.spriteSheet) {
 		if (this.image) {
-			this.image = gamejs.transform.rotate(this.image, (this.body.body.GetAngle() - Math.PI/2) * (180 / Math.PI));
 			gamejs.sprite.Sprite.prototype.draw.apply(this, arguments);
 		};
 	} else {
