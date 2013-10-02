@@ -1,8 +1,7 @@
 var gamejs = require('gamejs');
-var Sprite = require('gamejs/sprite').Sprite;
-var draw = require('gamejs/draw');
-var objects = require('gamejs/utils/objects');
-var config = require('../config');
+var Sprite = gamejs.sprite.Sprite;
+var draw = gamejs.draw;
+var objects = gamejs.utils.objects;
 var SpriteSheet = require('./animate').SpriteSheet;
 var Animation = require('./animate').Animation;
 
@@ -80,13 +79,13 @@ Actor.prototype.draw = function(display) {
 	} else {
 		//draw.rect(display, "#000FFF", new gamejs.Rect(this.pos, [5,5]));
 	}
-	
+	/*
 	if (config.DEBUG) {
 		var color = "#000FFF";
 		if (!this._inControl) {
 			var color = "#555000";
 		}
 		draw.rect(display, color, this.rect, 1);
-	}
+	}*/
 	return;
 };
