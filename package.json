@@ -8,7 +8,8 @@
         "deploy": "node ./scripts/deploy.js"
     },
     "dependencies": {
-        "gamejs": "~1.0.0"
+        "gamejs": "~1.0.0",
+        "box2dweb": "~2.1.0b"
     },
     "devDependencies": {
         "browserify": "~2.29.0",
