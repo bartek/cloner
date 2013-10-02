@@ -23,7 +23,7 @@ Actor.prototype.init = function(options) {
     this.angle = options.angle * (Math.PI / 180) || 0;
     this.density = options.density || 2;
 
-    this.absAngle = this.angle;
+	this.physics = options.physics || null;
 
 	this.startingAnimation = options.startingAnimation || 'static';
 
@@ -38,6 +38,19 @@ Actor.prototype.init = function(options) {
         var animations = options.animations || DEFAULT_ANIMATIONS;
         this.animation = new Animation(this.spriteSheet, animations);
         this.animation.start(this.startingAnimation);
+    }
+
+    if (this.physics) {
+        this.body = new Body(this.physics, {
+            type: options.type || 'dynamic',
+            x: this.x,
+            y: this.y,
+            height: options.phys_height,
+            width: options.phys_width,
+            angle: this.angle,
+            density: this.density,
+            fixedRotation: options.fixedRotation || false,
+        });
     }
 
 	return;
@@ -77,13 +90,5 @@ Actor.prototype.draw = function(display) {
 	} else {
 		//draw.rect(display, "#000FFF", new gamejs.Rect(this.pos, [5,5]));
 	}
-	/*
-	if (config.DEBUG) {
-		var color = "#000FFF";
-		if (!this._inControl) {
-			var color = "#555000";
-		}
-		draw.rect(display, color, this.rect, 1);
-	}*/
 	return;
 };

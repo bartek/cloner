@@ -3,7 +3,7 @@ var gamejs = require('gamejs');
 var Physics  = require('./physics').Physics;
 var Joint = require('./physics').Joint;
 
-var objects = require('gamejs/utils/objects');
+var objects = gamejs.utils.objects;
 
 var Actor = require('./actors').Actor;
 
