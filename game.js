@@ -27,5 +27,5 @@ Game.prototype.draw = function(surface) {
 };
 
 Game.prototype.update = function(dt) {
-    this.player.update(dt);
+    //this.player.update(dt);
 };
