@@ -1,7 +1,7 @@
 var gamejs = require('gamejs'),
     conf = require('./conf'),
-    TileMap = require('./gramework/tilemap').TileMap,
-    Actor = require('./gramework/actors').Actor,
+    TileMap = require('gramework').tilemap.TileMap,
+    Actor = require('gramework').actors.Actor,
     extend = gamejs.utils.objects.extend;
 
 var imgfy = function(imgPath) {

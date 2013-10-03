@@ -9,7 +9,8 @@
     },
     "dependencies": {
         "gamejs": "~1.0.0",
-        "box2dweb": "~2.1.0b"
+        "box2dweb": "~2.1.0b",
+        "gramework": "https://github.com/bartek/gramework/tarball/master"
     },
     "devDependencies": {
         "browserify": "~2.29.0",
