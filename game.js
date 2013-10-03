@@ -1,6 +1,6 @@
 var gamejs = require('gamejs'),
     conf = require('./conf'),
-    TileMap = require('./tilemap').TileMap,
+    TileMap = require('./gramework/tilemap').TileMap,
     Actor = require('./gramework/actors').Actor,
     extend = gamejs.utils.objects.extend;
 
