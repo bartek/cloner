@@ -14,13 +14,17 @@ var Game = exports.Game = function() {
         width:800,
         height:600
     });
-    this.physics = new Physics();
+    this.physics = new Physics({
+        element: document.getElementById('gjs-canvas'),
+        debug: false
+    });
+
     this.player = new player.Player({
         scale: 1,
         height: 32,
         width: 32,
         x:290,
-        y:450,
+        y:250,
         spriteSheet: [conf.Images.player, {height:32, width:32}],
         animations: {
             'static': [0]
@@ -35,6 +39,7 @@ var Game = exports.Game = function() {
 
 Game.prototype.draw = function(surface) {
     this.scene.draw(surface);
+    this.physics.draw(surface);
 };
 
 Game.prototype.event = function(ev) {
@@ -42,6 +47,6 @@ Game.prototype.event = function(ev) {
 };
 
 Game.prototype.update = function(dt) {
-    this.physics.step(dt);
     this.scene.update(dt);
+    this.physics.update(dt);
 };
