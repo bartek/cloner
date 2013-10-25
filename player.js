@@ -26,8 +26,8 @@ Player.prototype.update = function(dt) {
     this.angle = this.controller.angle();
     if (typeof this.angle !== "undefined") {
         var pos = this.moveUnit(dt);
-        this.rect.x = pos.x;
-        this.rect.y = pos.y;
+        this.realRect.x = pos.x;
+        this.realRect.y = pos.y;
     }
 };
 
