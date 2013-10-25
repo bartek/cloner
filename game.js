@@ -16,6 +16,7 @@ var Game = exports.Game = function() {
         width: 32,
         x:200,
         y:25,
+        collisionRect: {width: 20, height:30},
         spriteSheet: [conf.Images.player, {height:32, width:32}],
         animations: {
             'static': [0]
