@@ -4,7 +4,8 @@ var gamejs = require('gamejs'),
     extend = gamejs.utils.objects.extend,
     scenes = require('gramework').scenes,
     Physics = require('gramework').physics.Physics,
-    player = require('./player');
+    player = require('./player'),
+    Emitter = require('gramework').particles.Emitter;
 
 // Container for the entire game.
 var Game = exports.Game = function() {
@@ -37,6 +38,10 @@ var Game = exports.Game = function() {
     this.map = new TileMap('./images/maps/tutorial.tmx', this.physics.world);
     this.scene.pushLayer(this.map);
     this.scene.camera.follow(this.player);
+    this.emitter = new Emitter({x:250,y:250},{
+        rate: 100
+    });
+    this.scene.pushElement(this.emitter);
 };
 
 Game.prototype.draw = function(surface) {
