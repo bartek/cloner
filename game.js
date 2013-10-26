@@ -16,6 +16,7 @@ var Game = exports.Game = function() {
     });
     this.physics = new Physics({
         element: document.getElementById('gjs-canvas'),
+        gravity: 20,
         debug: false
     });
 
@@ -45,6 +46,7 @@ Game.prototype.draw = function(surface) {
 
 Game.prototype.event = function(ev) {
     this.scene.event(ev);
+    this.player.event(ev);
 };
 
 Game.prototype.update = function(dt) {
