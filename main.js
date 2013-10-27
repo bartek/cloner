@@ -9,6 +9,7 @@ var main = function() {
     var game = new Game();
     dispatch.push(game);
 
+    // Play area.
     var mainSurface = gamejs.display.setMode([800, 600], gamejs.display.DISABLE_SMOOTHING);
 
     gamejs.onTick(function(dt) {

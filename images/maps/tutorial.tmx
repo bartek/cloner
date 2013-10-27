@@ -7,6 +7,11 @@
     <property name="collisions" value="1"/>
    </properties>
   </tile>
+  <tile id="3">
+   <properties>
+    <property name="spawn" value="start"/>
+   </properties>
+  </tile>
  </tileset>
  <tileset firstgid="401" name="32x32-foreground" tilewidth="32" tileheight="32">
   <image source="../32x32-foreground.png" width="640" height="640"/>
