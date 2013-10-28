@@ -1,7 +1,8 @@
 var gamejs = require('gamejs'),
     extend = gamejs.utils.objects.extend,
     input = require('gramework').input,
-    Actor = require('gramework').actors.Actor;
+    Actor = require('gramework').actors.Actor,
+    conf = require('./conf');
 
 var imgfy = function(imgPath) {
     return gamejs.image.load(imgPath);
@@ -34,7 +35,7 @@ Player.prototype.update = function(dt) {
 Player.prototype.moveUnit = function(dt) {
     // TODO: Silly naming. Fix.
     this.body.body.ApplyForce(this.velVector, this.body.body.GetWorldCenter());
-    this.body.body.SetLinearDamping(1.5);
+    this.body.body.SetLinearDamping(5);
 
     this.velVector.x = Math.cos(this.angle) * this.speed * (dt / 1000);
 

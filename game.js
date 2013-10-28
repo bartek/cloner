@@ -38,8 +38,9 @@ var Game = exports.Game = function() {
     this.map = new TileMap('./images/maps/tutorial.tmx', this.physics.world);
     this.scene.pushLayer(this.map);
     this.scene.camera.follow(this.player);
-    this.emitter = new Emitter({x:250,y:250},{
-        rate: 100
+        this.emitter = new Emitter({x:250,y:250},{
+        rate: 60,
+        maxParticles: 100
     });
     this.scene.pushElement(this.emitter);
 };
@@ -55,6 +56,7 @@ Game.prototype.event = function(ev) {
 };
 
 Game.prototype.update = function(dt) {
+    if (dt > 1000 / 3) dt = 1000 / 3;
     this.scene.update(dt);
     this.physics.update(dt);
 };

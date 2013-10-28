@@ -1,6 +1,7 @@
 var gamejs = require('gamejs'),
     Dispatcher = require('./dispatcher').Dispatcher,
-    Game = require('./game').Game;
+    Game = require('./game').Game,
+    gramework = require('gramework'),
     conf = require('./conf');
 
 
@@ -25,5 +26,6 @@ var images = Object.keys(conf.Images).map(function(img) {
     return conf.Images[img];
 });
 console.log(images);
+gramework.init();
 gamejs.preload(images);
 gamejs.ready(main);
