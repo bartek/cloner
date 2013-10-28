@@ -17,7 +17,7 @@ var Game = exports.Game = function() {
     });
     this.physics = new Physics({
         element: document.getElementById('gjs-canvas'),
-        gravity: 800,
+        gravity: 9.8,
         debug: false
     });
 
@@ -42,8 +42,8 @@ var Game = exports.Game = function() {
         scale: 1,
         height: 32,
         width: 32,
-        x:start.rect.x,
-        y:start.rect.y,
+        x: 250,
+        y: 250,
         collisionRect: {width: 20, height:30},
         spriteSheet: [conf.Images.player, {height:32, width:32}],
         animations: {
