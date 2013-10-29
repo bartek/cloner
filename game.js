@@ -17,7 +17,7 @@ var Game = exports.Game = function() {
     });
     this.physics = new Physics({
         element: document.getElementById('gjs-canvas'),
-        gravity: 9.8,
+        gravity: 9.8 * 20,
         debug: false
     });
 

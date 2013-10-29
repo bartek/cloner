@@ -21,6 +21,7 @@ var Player = exports.Player = function() {
     this.maxSpeed = 5000;
     this.angle = null;
     this.accel = 0.05;
+    this.canJump = true;
 };
 extend(Player, Actor);
 
@@ -44,6 +45,12 @@ Player.prototype.update = function(dt) {
         }
     }
 
+    if (this.controller.jumped() && this.canJump) {
+        this.body.body.ApplyImpulse({x:0,y:20000}, this.body.body.GetWorldCenter());
+        this.canJump = false;
+        console.log('jump');
+    }
+
     this.angle = this.controller.angle();
 
     if (typeof this.angle !== "undefined") {
@@ -56,7 +63,6 @@ Player.prototype.update = function(dt) {
 Player.prototype.moveUnit = function(dt) {
     // TODO: Silly naming. Fix.
     this.body.body.ApplyForce(this.velVector, this.body.body.GetWorldCenter());
-    this.body.body.SetLinearDamping(5);
 
     this.velVector.x = Math.cos(this.angle) * this.speed * (dt / 1000);
 
