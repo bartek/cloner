@@ -12,7 +12,7 @@ var Game = exports.Game = function() {
     this.paused = false;
 
     this.scene = new scenes.Scene({
-        width:1600,
+        width:800,
         height:1200
     });
     this.physics = new Physics({
