@@ -19,7 +19,6 @@ var Player = exports.Player = function() {
     this.controller = new input.GameController();
     this.speed = 500;
     this.maxSpeed = 5000;
-    this.angle = null;
     this.accel = 0.05;
     this.canJump = true;
 };
@@ -50,8 +49,6 @@ Player.prototype.update = function(dt) {
         this.canJump = false;
         console.log('jump');
     }
-
-    this.angle = this.controller.angle();
 
     if (typeof this.angle !== "undefined") {
         var pos = this.moveUnit(dt);
