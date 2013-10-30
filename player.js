@@ -19,6 +19,7 @@ var Player = exports.Player = function() {
     this.controller = new input.GameController();
     this.speed = 500;
     this.maxSpeed = 5000;
+    this.angle = null;
     this.accel = 0.05;
     this.canJump = true;
 };
@@ -45,10 +46,11 @@ Player.prototype.update = function(dt) {
     }
 
     if (this.controller.jumped() && this.canJump) {
-        this.body.body.ApplyImpulse({x:0,y:20000}, this.body.body.GetWorldCenter());
+        this.body.body.ApplyImpulse({x:0,y:-2000}, this.body.body.GetWorldCenter());
         this.canJump = false;
-        console.log('jump');
     }
+
+    this.angle = this.controller.angle();
 
     if (typeof this.angle !== "undefined") {
         var pos = this.moveUnit(dt);
