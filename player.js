@@ -21,7 +21,12 @@ var Player = exports.Player = function() {
     this.maxSpeed = 5000;
     this.angle = null;
     this.accel = 0.05;
+
+    // Jumping
+    this.countJump = 0;
     this.canJump = true;
+    this.endJump = true;
+    this.jumpHeight = 800;
 };
 extend(Player, Actor);
 
@@ -45,18 +50,18 @@ Player.prototype.update = function(dt) {
         }
     }
 
-    if (this.controller.jumped() && this.canJump) {
-        this.body.body.ApplyImpulse({x:0,y:-2000}, this.body.body.GetWorldCenter());
-        this.canJump = false;
+    if (this.isGrounded) {
+        this.countJump = 0;
+        this.endJump = true;
     }
 
-    this.angle = this.controller.angle();
-
-    if (typeof this.angle !== "undefined") {
-        var pos = this.moveUnit(dt);
-        this.realRect.x = pos.x;
-        this.realRect.y = pos.y;
+    if (typeof this.controller.angle() !== "undefined") {
+        this.angle = this.controller.angle();
     }
+
+    var pos = this.moveUnit(dt);
+    this.realRect.x = pos.x;
+    this.realRect.y = pos.y;
 };
 
 Player.prototype.moveUnit = function(dt) {
